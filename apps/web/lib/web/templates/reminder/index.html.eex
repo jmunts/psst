@@ -1,0 +1,33 @@
+<h1>Reminders</h1>
+
+<div class="row pull-right">
+  <div class="col-xs-12">
+    <%= link "New reminder", to: reminder_path(@conn, :new), class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <th>Description</th>
+        <th>Status</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%= for reminder <- @reminders do %>
+          <tr>
+            <td><%= reminder.description %></td>
+            <td><%= reminder.status %></td>
+            <td>
+              <div class="pull-right">
+                <%= link "Edit", to: reminder_path(@conn, :edit, reminder), class: "btn btn-xs btn-primary" %>
+                <%= link "Delete", to: reminder_path(@conn, :delete, reminder), method: :delete, class: "btn btn-xs btn-danger", data: [confirm: "Are you sure?"] %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

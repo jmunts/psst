@@ -1,0 +1,27 @@
+<h1>Edit Reminder</h1>
+
+<div class="row pull-right">
+  <div class="col-xs-12">
+    <%= link "Back to Reminders", to: reminder_path(@conn, :index), class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for @changeset, reminder_path(@conn, :update, @changeset.data), fn f -> %>
+    <div class="row">
+      <div class="col-xs-offset-4 col-xs-4">
+        <%= label f, :description, class: "control-label" %>
+        <%= text_input f, :description, class: "form-control", autofocus: true %>
+        <%= error_tag f, :description %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-offset-4 col-xs-4">
+        <%= submit "Save", class: "btn btn-success btn-block" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
